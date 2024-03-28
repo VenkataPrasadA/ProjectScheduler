@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "",
+      "type": "com.ProjectScheduler.cfg.WebConfig",
+      "sourceType": "com.ProjectScheduler.cfg.WebConfig"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
