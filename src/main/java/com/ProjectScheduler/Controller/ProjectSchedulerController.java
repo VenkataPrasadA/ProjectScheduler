@@ -197,7 +197,8 @@ public class ProjectSchedulerController {
 		}
 	
 	
-	@Scheduled(cron = "${DmsWeekTime}")
+	//@Scheduled(cron = "${DmsWeekTime}")
+	@Scheduled(cron = "0 49 11 * * *")
 	public void Weeklyreport() throws Exception {
 		System.out.println("Time is for Weeklyreport - "+LocalDate.now().toString());
 		try {
@@ -897,7 +898,7 @@ public class ProjectSchedulerController {
 	                              service.updateMailSuccessCount(MailTrackingId, mailSendSuccessCount.get(), "W");
 	                       }
 	                       } else {
-	                              service.UpdateNoPendingReply("D");
+	                              service.UpdateNoPendingReply("W");
 	                          }
 	                      
 	                  } catch (Exception e) {

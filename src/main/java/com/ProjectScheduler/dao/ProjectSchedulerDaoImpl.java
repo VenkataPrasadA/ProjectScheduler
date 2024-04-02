@@ -238,7 +238,7 @@ public class ProjectSchedulerDaoImpl implements ProjectSchedulerDao {
 		}
 		
 		
-		private static final String WEEKLYPENDINGREPLYEMPDATA = "SELECT  m.DakId,m.EmpId,empData.EmpName,empData.Email,a.DakNo, sourceData.SourceShortName,a.ActionDueDate  FROM dak_marking m LEFT JOIN employee empData ON empData.EmpId = m.EmpId JOIN Dak a ON m.DakId = a.DakId LEFT JOIN dak_source_details sourceData ON sourceData.SourceDetailId = a.SourceDetailId WHERE  m.ActionDueDate IS NOT NULL AND DATE(m.ActionDueDate) >= CURDATE() - INTERVAL WEEKDAY(CURDATE()) DAY AND DATE(m.ActionDueDate) < CURDATE() + INTERVAL 7 - WEEKDAY(CURDATE()) DAY  AND m.EmpId NOT IN (SELECT r.EmpId FROM dak_reply r WHERE r.DakId = m.DakId)  AND a.DakStatus != 'DI' AND m.IsActive=1 ORDER BY ActionDueDate;";   
+		private static final String WEEKLYPENDINGREPLYEMPDATA = "SELECT  m.DakId,m.EmpId,empData.EmpName,empData.Email,a.DakNo, sourceData.SourceShortName,a.ActionDueDate,empData.DronaEmail  FROM dak_marking m LEFT JOIN employee empData ON empData.EmpId = m.EmpId JOIN Dak a ON m.DakId = a.DakId LEFT JOIN dak_source_details sourceData ON sourceData.SourceDetailId = a.SourceDetailId WHERE  m.ActionDueDate IS NOT NULL AND DATE(m.ActionDueDate) >= CURDATE() - INTERVAL WEEKDAY(CURDATE()) DAY AND DATE(m.ActionDueDate) < CURDATE() + INTERVAL 7 - WEEKDAY(CURDATE()) DAY  AND m.EmpId NOT IN (SELECT r.EmpId FROM dak_reply r WHERE r.DakId = m.DakId)  AND a.DakStatus != 'DI' AND m.IsActive=1 ORDER BY ActionDueDate;";   
 		@Override
 		public List<Object[]> GetWeeklyPendingReplyEmpData() throws Exception{
 			logger.info(new Date() + "Inside DAO GetWeeklyPendingReplyEmpData");
